@@ -5,7 +5,7 @@ import {HeaderComponent} from "./components/header/header.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeComponent, HeaderComponent],
+  imports: [HomeComponent, HeaderComponent],
   template: `
     <app-header />
     <main>
@@ -14,7 +14,7 @@ import {HeaderComponent} from "./components/header/header.component";
   `,
   styles: `
     main {    
-        padding: 16px;               
+        padding: 16px;
     }
   `,
 })
