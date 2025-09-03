@@ -4,9 +4,10 @@ import {Market} from "../model/market.type";
 
 @Component({
   selector: 'app-market',
+  standalone: true,
   imports: [],
   templateUrl: './market.component.html',
-  styleUrl: './market.component.css'
+  styleUrls: ['./market.component.css']
 })
 export class MarketComponent implements OnInit{
   marketService = inject(MarketService);

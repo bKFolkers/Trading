@@ -1,0 +1,7 @@
+p.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin: 0; /* voorkom extra spacing */
+}
