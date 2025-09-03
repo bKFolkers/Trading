@@ -1,1 +1,3 @@
-<p>market works!</p>
+@for (market of marketItems(); track $index){
+    <p>{{ market.title }}</p>
+}
