@@ -1,0 +1,19 @@
+header {
+    display: flex;
+    padding-inline: 16px;
+    padding-block: 8px;
+    background-color: #333;
+    color: white;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.header-nav h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.header-nav p {
+    font-size: 1rem;
+    margin: 4px 0 0 0;
+}
