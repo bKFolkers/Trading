@@ -6,14 +6,41 @@ header {
     color: white;
     align-content: center;
     justify-content: space-between;
-}
 
-.header-nav h1 {
-    font-size: 2rem;
-    margin: 0;
-}
 
-.header-nav p {
-    font-size: 1rem;
-    margin: 4px 0 0 0;
+
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title {
+            cursor: pointer;
+            font-size: 2rem;
+        }
+
+        span {
+            cursor: pointer;
+            color: white;
+            &:hover{
+                color: #777;
+            }
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 16px;
+            li {
+                cursor: pointer;
+                color: white;
+                &:hover{
+                    color: #777;
+                }
+            }
+        }
+    }
+
+
 }

@@ -19,5 +19,5 @@ export const routes: Routes = [
         loadComponent: () => {
             return import('./portfolio/portfolio.component').then((m) => m.PortfolioComponent)
         }
-    }
+    },
 ];
