@@ -1,6 +1,9 @@
 <header>
     <nav class="header-nav">
-        <h1>{{ title() }}</h1>
-        <p>For all your investing needs</p>
+        <span routerLink="/">{{ title() }}</span>
+        <ul>
+            <li><a routerLink="/market">Market</a></li>
+            <li><a routerLink="/portfolio">Portfolio</a></li>
+        </ul>
     </nav>
 </header>
