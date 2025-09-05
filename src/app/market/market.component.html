@@ -1,3 +1,11 @@
-@for (market of marketItems(); track market.id){
-    <p>{{ market.title }}</p>
-}
+<h2>Market Data</h2>
+
+<ul class="marketData">
+    <li class="marketItem" *ngFor="let symbol of symbols; let i = index">
+        <input id="market-{{i}}" type="checkbox" [value]="symbol" />
+        <label for="market-{{i}}">
+            <strong>{{ symbol }}</strong> -
+            Price: {{ prices()[symbol].price || 'Loading...' }}
+        </label>
+    </li>
+</ul>
