@@ -1,7 +1,7 @@
-<p>Counter value: {{ counterValue() }}</p>
 
 <div>
-    <button (click)="increment()">Increment</button>
-    <button (click)="reset()">Reset</button>
-    <button (click)="decrement()">Decrement</button>
+    <button type="button" class="btn btn-danger" (click)="increment()">Buy</button>
+    <button type="button" class="btn btn-success" (click)="decrement()">Sell</button>
 </div>
+<p>Stock owned: {{ counterValue() }}</p>
+

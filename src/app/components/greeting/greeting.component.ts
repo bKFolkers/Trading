@@ -8,5 +8,7 @@ import {Component, input} from '@angular/core';
   styleUrls: ['./greeting.component.css']
 })
 export class GreetingComponent {
-  message = input("Hello");
+  homeTitle = input("Title");
+  homeSubTitle = input("Subtitle")
+  homeIntroduction = input ("Introduction")
 }

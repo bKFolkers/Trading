@@ -2,19 +2,20 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MarketService } from "../services/market.service";
 import { catchError, of } from "rxjs";
+import {CounterComponent} from "../components/counter/counter.component";
+import {Market} from "../model/market.type";
+import {MarketItemComponent} from "../components/market-item/market-item.component";
 
 @Component({
     selector: 'app-market',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, MarketItemComponent, CounterComponent],
     templateUrl: './market.component.html',
     styleUrls: ['./market.component.css']
 })
 export class MarketComponent implements OnInit {
     marketService = inject(MarketService);
-
-    // store multiple stock prices
-    prices = signal<{ [symbol: string]: { price: string } }>({});
+    stocks = signal<Market>({});
 
     ngOnInit(): void {
         this.marketService.getMarketFromApi()
@@ -25,12 +26,11 @@ export class MarketComponent implements OnInit {
                 })
             )
             .subscribe(res => {
-                this.prices.set(res);
+                this.stocks.set(res);
             });
     }
 
-    // changed from method to getter
     get symbols(): string[] {
-        return Object.keys(this.prices());
+        return Object.keys(this.stocks());
     }
 }

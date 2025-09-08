@@ -1,6 +1,4 @@
-export type Market = {
-    userId: number;
-    added: boolean;
-    title: string;
-    id: number;
-}
+export type Market = { [symbol: string]: { price: string } };
+
+export type stockSymbol = [stockSympol: string];
+export type stockPrice = [stockPrice : string];

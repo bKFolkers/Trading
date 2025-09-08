@@ -9,5 +9,5 @@ import {RouterLink} from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  title = signal('Loss Vegas')
+  appTitle = signal('Loss Vegas')
 }
