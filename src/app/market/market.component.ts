@@ -3,9 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MarketService } from "../services/market.service";
 import { catchError, of } from "rxjs";
 import {CounterComponent} from "../components/counter/counter.component";
-import {Market} from "../model/market.type";
 import {MarketItemComponent} from "../components/market-item/market-item.component";
 import {PortfolioService} from "../services/portfolio.service";
+
+
+export interface MarketStock {
+    symbol: string;
+    price: string;
+}
 
 @Component({
     selector: 'app-market',
@@ -14,10 +19,12 @@ import {PortfolioService} from "../services/portfolio.service";
     templateUrl: './market.component.html',
     styleUrls: ['./market.component.css']
 })
+
 export class MarketComponent implements OnInit {
     marketService = inject(MarketService);
-    stocks = signal<Market>({});
     portfolioService = inject(PortfolioService);
+
+    stocksArray = signal<MarketStock[]>([]);
 
     ngOnInit(): void {
         this.marketService.getMarketFromApi()
@@ -27,16 +34,23 @@ export class MarketComponent implements OnInit {
                     return of({});
                 })
             )
-            .subscribe(res => {
-                this.stocks.set(res);
+            .subscribe((res: { [symbol: string]: { price: string } }) => {
+                // Convert object to array
+                const array: MarketStock[] = Object.keys(res).map(symbol => ({
+                    symbol,
+                    price: res[symbol].price
+                }));
+
+                this.stocksArray.set(array);
             });
     }
 
-    onToggle(symbol: string, price: string) {
-        this.portfolioService.toggleStock({ symbol, price });
+    onToggle(stock: MarketStock) {
+        this.portfolioService.toggleStock(stock);
     }
 
-    get symbols(): string[] {
-        return Object.keys(this.stocks());
+    get symbols(): MarketStock[] {
+        return this.stocksArray();
     }
+
 }
