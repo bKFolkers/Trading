@@ -6,7 +6,6 @@ import {CounterComponent} from "../components/counter/counter.component";
 import {MarketItemComponent} from "../components/market-item/market-item.component";
 import {PortfolioService} from "../services/portfolio.service";
 
-
 export interface MarketStock {
     symbol: string;
     price: string;
@@ -34,11 +33,11 @@ export class MarketComponent implements OnInit {
                     return of({});
                 })
             )
-            .subscribe((res: { [symbol: string]: { price: string } }) => {
-                // Convert object to array
-                const array: MarketStock[] = Object.keys(res).map(symbol => ({
+            .subscribe((apiResponse: { [symbol: string]: { price: string } }) => {
+                // maakt van object (symbol en price) een array
+                const array: MarketStock[] = Object.keys(apiResponse).map(symbol => ({
                     symbol,
-                    price: res[symbol].price
+                    price: apiResponse[symbol].price
                 }));
 
                 this.stocksArray.set(array);
