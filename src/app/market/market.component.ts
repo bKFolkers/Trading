@@ -5,6 +5,7 @@ import { catchError, of } from "rxjs";
 import {CounterComponent} from "../components/counter/counter.component";
 import {Market} from "../model/market.type";
 import {MarketItemComponent} from "../components/market-item/market-item.component";
+import {PortfolioService} from "../services/portfolio.service";
 
 @Component({
     selector: 'app-market',
@@ -16,6 +17,7 @@ import {MarketItemComponent} from "../components/market-item/market-item.compone
 export class MarketComponent implements OnInit {
     marketService = inject(MarketService);
     stocks = signal<Market>({});
+    portfolioService = inject(PortfolioService);
 
     ngOnInit(): void {
         this.marketService.getMarketFromApi()
@@ -29,6 +31,11 @@ export class MarketComponent implements OnInit {
                 this.stocks.set(res);
             });
     }
+
+    onToggle(symbol: string, price: string) {
+        this.portfolioService.toggleStock({ symbol, price });
+    }
+
 
     get symbols(): string[] {
         return Object.keys(this.stocks());

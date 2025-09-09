@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {PortfolioService} from "../services/portfolio.service";
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent {
-
+  portfolioService = inject(PortfolioService);
 }

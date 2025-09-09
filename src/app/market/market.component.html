@@ -16,9 +16,16 @@
         <tbody>
         <tr *ngFor="let symbol of symbols; let i = index" class="text-center align-middle">
             <th scope="row">{{ i + 1 }}</th>
-            <td><app-market-item [symbol]="symbol"> </app-market-item></td>
-            <td><app-market-item [price]="stocks()[symbol].price"> </app-market-item></td>
-            <td><input type="checkbox" id="follow-{{ i }}" [value]="symbol" /></td>
+            <td><app-market-item [symbol]="symbol"></app-market-item></td>
+            <td><app-market-item [price]="stocks()[symbol].price"></app-market-item></td>
+            <td>
+                <input
+                        type="checkbox"
+                        id="follow-{{ i }}"
+                        [checked]="portfolioService.isInPortfolio(symbol)"
+                        (change)="onToggle(symbol, stocks()[symbol].price)"
+                />
+            </td>
             <td><app-counter></app-counter></td>
         </tr>
         </tbody>
