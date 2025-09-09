@@ -36,7 +36,6 @@ export class MarketComponent implements OnInit {
         this.portfolioService.toggleStock({ symbol, price });
     }
 
-
     get symbols(): string[] {
         return Object.keys(this.stocks());
     }

@@ -18,8 +18,8 @@
             <tbody>
             <tr *ngFor="let stock of portfolioService.portfolio(); let i = index">
                 <td>{{ i + 1 }}</td>
-                <td>{{ stock.symbol }}</td>
-                <td>{{ stock.price }}</td>
+                <td><app-market-item [symbol]="stock.symbol"></app-market-item></td>
+                <td><app-market-item [price]="stock.price"></app-market-item></td>
             </tr>
             </tbody>
         </table>

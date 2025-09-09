@@ -9,7 +9,6 @@ export interface PortfolioStock {
   providedIn: 'root'
 })
 export class PortfolioService {
-  // Signal met een array van stocks
   private _portfolio = signal<PortfolioStock[]>([]);
 
   portfolio = this._portfolio.asReadonly();
